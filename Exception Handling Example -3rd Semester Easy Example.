@@ -1,0 +1,48 @@
+//JavaProgramming-Exception Handling Day1.
+
+
+So what do we say is exception and exception handling?
+Quite a common term eh? but still confused?
+
+It's not hard to understand.
+
+Exceptions are basically a problem or event that causes our code to crash and to be specific: they show problems during run time.
+Quite not fond of errors myself.
+It is always best to understand what the possible exceptions are .. what sorts of problem we would face when using an application.
+Basically, when we use application we dont errors .. errors = exceptions.
+
+So,we gotta handle the exception as properly as we could.
+So, here i have got a basic example of Ehandling ..  that we have done since elementary school anything divided by 0 is a problem.
+
+public class EHandling {
+    public static void main(String[] args) {
+        // Example 1: normal division
+        int a = 100;
+        int b = 10;
+        int result = Ex.xyz(a, b); // calling static method
+        System.out.println("100 / 10 = " + result); // Output: 10
+
+        // Example 2: division by zero
+        int x = 50;
+        int y = 0;
+        int result2 = Ex.xyz(x, y); // triggers exception
+        System.out.println("50 / 0 = " + result2); // Output: 0 and prints "Cannot divide by zero"
+
+        // Program continues safely even after exception
+        System.out.println("Program continues running normally...");
+    }
+}
+
+// Class Ex contains method xyz to safely divide two numbers
+class Ex {
+    // Static method: no need to create an object to call
+    public static int xyz(int a, int b) {
+        int d = 0; // store division result
+        try {
+            d = a / b; // risky operation: might throw ArithmeticException
+        } catch (ArithmeticException e) { // catch division by zero
+            System.out.println("Cannot divide by zero");
+        }
+        return d; // returns 0 if exception occurred
+    }
+}
